@@ -32,6 +32,6 @@ main() {
     bcbiovm_python dx-cwl/dx-cwl compile-workflow $PNAME-workflow/main-$PNAME.cwl --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN
 
     dx mkdir -p $DX_PROJECT_ID:/$PNAME-workflow
-    dx upload -f -p --path "$DX_PROJECT_ID:/$PNAME-workflow/main-$PNAME-samples.json" $PNAME-workflow/main-$PNAME-samples.json
+    dx upload -p --path "$DX_PROJECT_ID:/$PNAME-workflow/main-$PNAME-samples.json" $PNAME-workflow/main-$PNAME-samples.json
     bcbiovm_python dx-cwl/dx-cwl run-workflow /dx-cwl-run/main-$PNAME/main-$PNAME /$PNAME-workflow/main-$PNAME-samples.json --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN
 }
