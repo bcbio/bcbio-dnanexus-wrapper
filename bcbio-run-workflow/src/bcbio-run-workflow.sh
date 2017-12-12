@@ -31,8 +31,4 @@ main() {
     dx mkdir -p $DX_PROJECT_ID:/$PNAME-workflow
     dx upload -p --path $DX_PROJECT_ID:/$PNAME-workflow $PNAME-workflow/main-$PNAME-samples.json
     bcbiovm_python dx-cwl run-workflow /dx-cwl-run/main-$PNAME/main-$PNAME /$PNAME-workflow/main-$PNAME-samples.json --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN
-
-    dx-jobutil-add-output workflow_name "$workflow_name" --class=string
-    dx-jobutil-add-output workflow_path "$workflow_path" --class=string
-    dx-jobutil-add-output workflow_id "$workflow_id" --class=string
 }
