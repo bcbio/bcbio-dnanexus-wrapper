@@ -21,6 +21,9 @@ main() {
     source /home/dnanexus/environment
     export DX_AUTH_TOKEN=`echo $DX_SECURITY_CONTEXT | jq -r .auth_token`
     export DX_PROJECT_ID=$DX_PROJECT_CONTEXT_ID
+    
+    unset DX_WORKSPACE_ID
+    dx cd $DX_PROJECT_CONTEXT_ID:
 
     bcbio_vm.py template --systemconfig system_configuration.yml yaml_template.yml $PNAME.csv
     bcbio_vm.py cwl --systemconfig system_configuration.yml $PNAME/config/$PNAME.yaml
@@ -29,6 +32,6 @@ main() {
     bcbiovm_python dx-cwl/dx-cwl compile-workflow $PNAME-workflow/main-$PNAME.cwl --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN
 
     dx mkdir -p $DX_PROJECT_ID:/$PNAME-workflow
-    dx upload -p --path $DX_PROJECT_ID:/$PNAME-workflow $PNAME-workflow/main-$PNAME-samples.json
+    dx upload -p --path "$DX_PROJECT_ID:/$PNAME-workflow/main-$PNAME-samples.json" $PNAME-workflow/main-$PNAME-samples.json
     bcbiovm_python dx-cwl/dx-cwl run-workflow /dx-cwl-run/main-$PNAME/main-$PNAME /$PNAME-workflow/main-$PNAME-samples.json --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN
 }
