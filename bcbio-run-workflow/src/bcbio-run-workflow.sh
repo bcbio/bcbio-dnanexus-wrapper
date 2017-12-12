@@ -17,12 +17,15 @@ main() {
     ln -s ~/install/bcbio-vm/anaconda/bin/conda /usr/local/bin/bcbiovm_conda
     ln -s ~/install/bcbio-vm/anaconda/bin/python /usr/local/bin/bcbiovm_python
 
+
+    source /home/dnanexus/environment
+    export DX_AUTH_TOKEN=`echo $DX_SECURITY_CONTEXT | jq -r .auth_token`
+    export DX_PROJECT_ID=$DX_PROJECT_CONTEXT_ID
+
     bcbio_vm.py template --systemconfig system_configuration.yml yaml_template.yml $PNAME.csv
     bcbio_vm.py cwl --systemconfig system_configuration.yml $PNAME/config/$PNAME.yaml
 
     git clone https://github.com/dnanexus/dx-cwl.git
-    export DX_AUTH_TOKEN=`echo $DX_SECURITY_CONTEXT | jq -r .auth_token`
-    export DX_PROJECT_ID=$DX_PROJECT_CONTEXT_ID
     bcbiovm_python dx-cwl/dx-cwl compile-workflow $PNAME-workflow/main-$PNAME.cwl --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN
 
     dx mkdir -p $DX_PROJECT_ID:/$PNAME-workflow
