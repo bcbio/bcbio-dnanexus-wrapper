@@ -32,9 +32,7 @@ main() {
     bcbiovm_python dx-cwl/dx-cwl compile-workflow $PNAME-workflow/main-$PNAME.cwl --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN --assets record-F8YXfF80BV9Pb2G7P4x9fvB5 --rootdir $output_folder
 
     dx mkdir -p $DX_PROJECT_ID:/$PNAME-workflow
-    dx upload --wait -p --path "$DX_PROJECT_ID:/$PNAME-workflow/main-$PNAME-samples.json" $PNAME-workflow/main-$PNAME-samples.json
+    dx upload --wait -p --path "$DX_PROJECT_ID:/$output_folder/main-$PNAME-samples.json" $PNAME-workflow/main-$PNAME-samples.json
 
-    sleep 15
-
-    bcbiovm_python dx-cwl/dx-cwl run-workflow /dx-cwl-run/main-$PNAME/main-$PNAME /$PNAME-workflow/main-$PNAME-samples.json --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN --rootdir $output_folder
+    bcbiovm_python dx-cwl/dx-cwl run-workflow /$output_folder/main-$PNAME/main-$PNAME /$PNAME-workflow/main-$PNAME-samples.json --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN --rootdir $output_folder
 }
