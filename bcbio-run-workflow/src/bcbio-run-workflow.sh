@@ -29,9 +29,12 @@ main() {
     bcbio_vm.py cwl --systemconfig system_configuration.yml $PNAME/config/$PNAME.yaml
 
     git clone https://github.com/dnanexus/dx-cwl.git
-    bcbiovm_python dx-cwl/dx-cwl compile-workflow $PNAME-workflow/main-$PNAME.cwl --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN --assets record-F8YXfF80BV9Pb2G7P4x9fvB5
+    bcbiovm_python dx-cwl/dx-cwl compile-workflow $PNAME-workflow/main-$PNAME.cwl --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN --assets record-F8YXfF80BV9Pb2G7P4x9fvB5 --rootdir $output_folder
 
     dx mkdir -p $DX_PROJECT_ID:/$PNAME-workflow
     dx upload --wait -p --path "$DX_PROJECT_ID:/$PNAME-workflow/main-$PNAME-samples.json" $PNAME-workflow/main-$PNAME-samples.json
-    bcbiovm_python dx-cwl/dx-cwl run-workflow /dx-cwl-run/main-$PNAME/main-$PNAME /$PNAME-workflow/main-$PNAME-samples.json --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN
+
+    sleep 15
+
+    bcbiovm_python dx-cwl/dx-cwl run-workflow /dx-cwl-run/main-$PNAME/main-$PNAME /$PNAME-workflow/main-$PNAME-samples.json --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN --rootdir $output_folder
 }
