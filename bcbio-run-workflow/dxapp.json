@@ -37,7 +37,7 @@
     },
     {
       "name": "output_folder",
-      "default": "dx-cwl-run",
+      "default": "/dx-cwl-run",
       "label": "Output folder for workflows and data",
       "class": "string",
       "optional": false,
@@ -50,6 +50,7 @@
   "outputSpec": [
   ],
   "runSpec": {
+    "assetDepends": [{"id": "record-F8kKb500Vzfy5XFQ62F22J8F"}],
     "timeoutPolicy": {
       "*": {
         "hours": 72

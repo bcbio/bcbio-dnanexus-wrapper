@@ -1,0 +1,9 @@
+{
+  "name": "bcbio-vm-asset",
+  "title": "Asset for the bcbio vm to speed up wrapper apps",
+  "description": "Performs a basic installation of bcbio-vm",
+  "version": "0.0.1",
+  "distribution": "Ubuntu",
+  "instanceType": "mem1_ssd1_x8",
+  "release": "14.04"
+}
