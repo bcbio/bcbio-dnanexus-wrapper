@@ -50,7 +50,7 @@
   "outputSpec": [
   ],
   "runSpec": {
-    "assetDepends": [{"id": "record-F8kKb500Vzfy5XFQ62F22J8F"}],
+    "assetDepends": [{"id": "record-F8kPPF00yPx3PFgZ2xj5fj57"}],
     "timeoutPolicy": {
       "*": {
         "hours": 72
