@@ -1,6 +1,8 @@
 #!/bin/bash
 main() {
 
+    BCBIO_CONTAINER="record-F8xzkK80f5vBJ96j7gX8YKb0"
+
     dx download "$yaml_template" -o yaml_template.yml
     dx download "$sample_spec" -o sample_spec.csv
     dx download "$system_configuration" -o system_configuration.yml
@@ -33,7 +35,7 @@ main() {
     bcbio_vm.py cwl --systemconfig system_configuration.yml $PNAME/config/$PNAME.yaml
 
     git clone https://github.com/dnanexus/dx-cwl.git
-    bcbiovm_python dx-cwl/dx-cwl compile-workflow $PNAME-workflow/main-$PNAME.cwl --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN --assets record-F8YXfF80BV9Pb2G7P4x9fvB5 --rootdir $output_folder
+    bcbiovm_python dx-cwl/dx-cwl compile-workflow $PNAME-workflow/main-$PNAME.cwl --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN --assets ${BCBIO_CONTAINER} --rootdir $output_folder
 
     dx rm -a $DX_PROJECT_ID:/${output_folder}/main-$PNAME-samples.json || true
     dx upload --verbose --wait -p --path "$DX_PROJECT_ID:/$output_folder/main-$PNAME-samples.json" $PNAME-workflow/main-$PNAME-samples.json
