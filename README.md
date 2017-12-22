@@ -40,3 +40,11 @@ dx ls -l
 in the directory you built the asset.
 
 As an alternative, assets can be referenced by name, and this code could be modified to do that if desired.  See the [dxapp.json](https://wiki.dnanexus.com/dxapp.json) for more information on that.  The issue with that is that an asset's content can change without the name changing so provenance could be affected.  For this reason the code explicitly uses record IDs.
+
+### Building the app
+
+After modififying the source files above appropriately, to build the app itself, in the desired project:
+
+```
+dx build -a bcbio-dnanexus-wrapper/bcbio-run-workflow
+```
