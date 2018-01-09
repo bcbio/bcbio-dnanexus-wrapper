@@ -1,7 +1,7 @@
 #!/bin/bash
 main() {
 
-    BCBIO_CONTAINER="record-F96Q1bj0f5v7VQk10qx6Yzvx"
+    BCBIO_CONTAINER="record-F9BJPF00f5v8xZ3F0qqZ86pB"
 
     dx download "$yaml_template" -o yaml_template.yml
     dx download "$sample_spec" -o sample_spec.csv
