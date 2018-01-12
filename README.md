@@ -51,13 +51,13 @@ dx build -a bcbio-dnanexus-wrapper/bcbio-run-workflow
 
 ### Release the app
 
-After the applet has been tested, to build the app and make it available for a particular organisation:
+After the applet has been tested, to build the app and make it available for a particular organisation, first you need to publish the app in dev mode:
 
 ```
 dx build --app bcbio-run-workflow --bill-to <replace with you org id>
 ```
 
-This step will publish the app in dev mode which you can test, after testing, you can publish the app by running the command generated as the output of the previous command:
+After testing, you can publish the app by running the command below:
 
 ```
 dx api app-bcbio-run-workflow/<replace with your version id> publish "{\"makeDefault\": true}"
