@@ -41,10 +41,25 @@ in the directory you built the asset.
 
 As an alternative, assets can be referenced by name, and this code could be modified to do that if desired.  See the [dxapp.json](https://wiki.dnanexus.com/dxapp.json) for more information on that.  The issue with that is that an asset's content can change without the name changing so provenance could be affected.  For this reason the code explicitly uses record IDs.
 
-### Building the app
+### Building the applet
 
-After modififying the source files above appropriately, to build the app itself, in the desired project:
+After modififying the source files above appropriately, to build the applet itself, in the desired project:
 
 ```
 dx build -a bcbio-dnanexus-wrapper/bcbio-run-workflow
 ```
+
+### Release the app
+
+After the applet has been tested, to build the app and make it available for a particular organisation, first you need to publish the app in dev mode:
+
+```
+dx build --app bcbio-run-workflow --bill-to <replace with you org id>
+```
+
+After testing, you can publish the app by running the command below:
+
+```
+dx api app-bcbio-run-workflow/<replace with your version id> publish "{\"makeDefault\": true}"
+```
+
