@@ -1,7 +1,7 @@
 #!/bin/bash
 main() {
 
-    BCBIO_CONTAINER="record-FBGqFKQ0f5v2x53x9jVyPpxY"
+    BCBIO_CONTAINER="record-FF2G3K00f5vGxY7V9g4Z55F2"
 
     dx download "$yaml_template" -o yaml_template.yml
     dx download "$sample_spec" -o sample_spec.csv
@@ -39,6 +39,8 @@ main() {
 
     dx rm -a $DX_PROJECT_ID:/${output_folder}/main-$PNAME-samples.json || true
     dx upload --verbose --wait -p --path "$DX_PROJECT_ID:/$output_folder/main-$PNAME-samples.json" $PNAME-workflow/main-$PNAME-samples.json
+    # Wait for upload to complete and the file to be available
+    sleep 5
 
     bcbiovm_python dx-cwl/dx-cwl run-workflow /$output_folder/main-$PNAME/main-$PNAME /$output_folder/main-$PNAME-samples.json --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN --rootdir $output_folder
 }
