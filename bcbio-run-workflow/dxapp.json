@@ -45,6 +45,26 @@
         "*"
       ],
       "help": ""
+    },
+    {
+      "name": "reuse_workflow",
+      "label": "Workflow ID of existing DNAnexus workflow (as opposed to compiling a new one)",
+      "class": "string",
+      "optional": true,
+      "patterns": [
+        "*"
+      ],
+      "help": ""
+    },
+    {
+      "name": "pull_from_docker_registry",
+      "label": "Pull the bcbio image from the Docker registry as opposed to using a cached asset",
+      "class": "string",
+      "optional": true,
+      "patterns": [
+        "*"
+      ],
+      "help": ""
     }
   ],
   "outputSpec": [
