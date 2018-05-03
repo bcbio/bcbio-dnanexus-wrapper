@@ -48,7 +48,7 @@
     },
     {
       "name": "reuse_workflow",
-      "label": "Workflow ID of existing DNAnexus workflow (as opposed to compiling a new one)",
+      "label": "Workflow ID or path within project of existing DNAnexus workflow (as opposed to compiling a new one)",
       "class": "string",
       "optional": true,
       "patterns": [
