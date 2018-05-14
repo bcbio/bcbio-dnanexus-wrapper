@@ -37,7 +37,8 @@ main() {
 
     bcbio_vm.py template --systemconfig system_configuration.yml yaml_template.yml $PNAME.csv
     bcbio_vm.py cwl --systemconfig system_configuration.yml $PNAME/config/$PNAME.yaml
-
+    tar -cvzf $PNAME-generated-cwl.tgz $PNAME-workflow/main-$PNAME.cwl
+    
     git clone https://github.com/dnanexus/dx-cwl.git
 
     if [ -n "$reuse_workflow" ]; then
@@ -45,6 +46,9 @@ main() {
     else
         WF_ID_OR_NAME="/$output_folder/main-$PNAME/main-$PNAME"
         bcbiovm_python dx-cwl/dx-cwl compile-workflow $PNAME-workflow/main-$PNAME.cwl --project $DX_PROJECT_ID --token $DX_AUTH_TOKEN ${BCBIO_ASSETS} --rootdir $output_folder
+        generated_cwl=$(dx upload $PNAME-generated-cwl.tgz --brief)
+        dx-jobutil-add-output generated_cwl "$generated_cwl" --class=file
+        
         dx rm -a $DX_PROJECT_ID:/${output_folder}/main-$PNAME-samples.json || true
         dx upload --verbose --wait -p --path "$DX_PROJECT_ID:/$output_folder/main-$PNAME-samples.json" $PNAME-workflow/main-$PNAME-samples.json
         # Wait for upload to complete and the file to be available

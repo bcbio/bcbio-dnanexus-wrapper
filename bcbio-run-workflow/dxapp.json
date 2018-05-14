@@ -68,6 +68,12 @@
     }
   ],
   "outputSpec": [
+    {
+      "name": "generated_cwl",
+      "label": "tar-gz of the generated CWL for this run",
+      "class": "file",
+      "optional": false
+    }
   ],
   "runSpec": {
     "assetDepends": [{"id": "record-FBZGPxQ0qQpf019074qfQ6bP"}],
