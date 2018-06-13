@@ -76,7 +76,7 @@
     }
   ],
   "runSpec": {
-    "assetDepends": [{"id": "record-FBZGPxQ0qQpf019074qfQ6bP"}],
+    "assetDepends": [{"id": "record-FGQ3xpQ0K4Q8gPX57f4ZV4kj"}],
     "timeoutPolicy": {
       "*": {
         "hours": 72

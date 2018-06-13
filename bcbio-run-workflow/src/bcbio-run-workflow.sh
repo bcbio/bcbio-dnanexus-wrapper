@@ -1,17 +1,20 @@
 #!/bin/bash
 main() {
 
-    if [ "$pull_from_docker_registry" = "true"]; then
+    BCBIO_CONTAINER="record-FGP9b0j0f5v02G5bG719F3F4"
+
+    if [ "$pull_from_docker_registry" = "true" ]; then
         BCBIO_ASSETS=""
     else
-        BCBIO_ASSETS="--assets record-FF2G3K00f5vGxY7V9g4Z55F2"
+        BCBIO_ASSETS="--assets $BCBIO_CONTAINER"
     fi
 
     dx download "$yaml_template" -o yaml_template.yml
     dx download "$sample_spec" -o sample_spec.csv
     dx download "$system_configuration" -o system_configuration.yml
-
-    pip install yq
+ 
+    bcbiovm_conda install -y -c conda-forge yq
+    ln -s /install/bcbio-vm/anaconda/bin/yq /usr/local/bin/yq
     PNAME=`yq -r .dnanexus.project < system_configuration.yml`
 
     mv sample_spec.csv ${PNAME}.csv
@@ -34,7 +37,8 @@ main() {
     export PATH=/usr/local/bin:$PATH
     ls /usr/local/bin
 
-
+    # Ignore PYTHONPATH set by DNAnexus instance, which introduces incompatible libraries
+    sed -i 's|bcbio-vm/anaconda/bin/python|bcbio-vm/anaconda/bin/python -Es|' /usr/local/bin/bcbio_vm.py
     bcbio_vm.py template --systemconfig system_configuration.yml yaml_template.yml $PNAME.csv
     bcbio_vm.py cwl --systemconfig system_configuration.yml $PNAME/config/$PNAME.yaml
     tar -cvzf $PNAME-generated-cwl.tgz $PNAME-workflow/main-$PNAME.cwl
