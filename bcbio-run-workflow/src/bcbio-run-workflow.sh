@@ -1,7 +1,7 @@
 #!/bin/bash
 main() {
 
-    BCBIO_CONTAINER="record-FGP9b0j0f5v02G5bG719F3F4"
+    BCBIO_CONTAINER="record-FJ2P25j0f5vJxx3K95BVVx2f"
 
     if [ "$pull_from_docker_registry" = "true" ]; then
         BCBIO_ASSETS=""
@@ -12,8 +12,12 @@ main() {
     dx download "$yaml_template" -o yaml_template.yml
     dx download "$sample_spec" -o sample_spec.csv
     dx download "$system_configuration" -o system_configuration.yml
- 
+
+    # version of requests shipping with DNAnexus incompatible with newer conda
+    PYTHONPATH_BACKUP=$PYTHONPATH
+    unset PYTHONPATH
     bcbiovm_conda install -y -c conda-forge yq
+    export PYTHONPATH=$PYTHONPATH_BACKUP
     ln -s /install/bcbio-vm/anaconda/bin/yq /usr/local/bin/yq
     PNAME=`yq -r .dnanexus.project < system_configuration.yml`
 
