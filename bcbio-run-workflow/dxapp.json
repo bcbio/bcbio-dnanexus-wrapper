@@ -45,12 +45,38 @@
         "*"
       ],
       "help": ""
+    },
+    {
+      "name": "reuse_workflow",
+      "label": "Workflow ID or path within project of existing DNAnexus workflow (as opposed to compiling a new one)",
+      "class": "string",
+      "optional": true,
+      "patterns": [
+        "*"
+      ],
+      "help": ""
+    },
+    {
+      "name": "pull_from_docker_registry",
+      "label": "Pull the bcbio image from the Docker registry as opposed to using a cached asset",
+      "class": "string",
+      "optional": true,
+      "patterns": [
+        "*"
+      ],
+      "help": ""
     }
   ],
   "outputSpec": [
+    {
+      "name": "generated_cwl",
+      "label": "tar-gz of the generated CWL for this run",
+      "class": "file",
+      "optional": false
+    }
   ],
   "runSpec": {
-    "assetDepends": [{"id": "record-F8yGy3Q0v302GpzV0xB7vj06"}],
+    "assetDepends": [{"id": "record-FJ2KQx80BFX876B22xzVP355"}],
     "timeoutPolicy": {
       "*": {
         "hours": 72

@@ -41,10 +41,53 @@ in the directory you built the asset.
 
 As an alternative, assets can be referenced by name, and this code could be modified to do that if desired.  See the [dxapp.json](https://wiki.dnanexus.com/dxapp.json) for more information on that.  The issue with that is that an asset's content can change without the name changing so provenance could be affected.  For this reason the code explicitly uses record IDs.
 
-### Building the app
+### Building the applet
 
-After modififying the source files above appropriately, to build the app itself, in the desired project:
+After modififying the source files above appropriately, to build the applet itself, in the desired project:
 
 ```
 dx build -a bcbio-dnanexus-wrapper/bcbio-run-workflow
 ```
+
+### Release the app
+
+After the applet has been tested, to build the app and make it available for a particular organisation, first you need to publish the app in dev mode:
+
+```
+dx build --app bcbio-run-workflow --bill-to <replace with you org id>
+```
+
+After testing, you can publish the app by running the command below:
+
+```
+dx api app-bcbio-run-workflow/<replace with your version id> publish "{\"makeDefault\": true}"
+```
+
+### R&D mode and reuse existing workflow results
+
+Generally in an R&D/pre-production mode you want to test a pipeline on a handful up to hundreds of samples. There still may be bugs/issues that would require changes in the underlying bcbio Docker image.   For this case, you'd like to reuse results up to the point of failure but still use a modified Docker image.
+
+Rather than use a cached asset on the platform (as described above), when running the workflow for the first time, provide this option to the app:
+
+```
+dx run bcbio-run-workflow -ipull_from_docker_registry=true ...
+```
+
+where '...' are the remaining options you would typically supply to the app.  This option ensures that the compiled workflow directly pulls from the Docker registry as opposed to using a cached asset.  This is a little less efficient and robust when compared to using a cached asset, but for tens to hundreds of runs it may be preferable to accellerate iteration for R&D purposes.
+
+Now, if you noticed a bug and subseequently modify the Docker image, you can reuse this workflow instead of compiling a new one:
+
+```
+dx run bcbio-run-workflow -ireuse_workflow=workflow-XXXX ...
+```
+
+OR
+
+```
+dx run bcbio-run-workflow -ireuse_workflow=path/to/workflow-name ...
+```
+
+The execution of this app will allow reuse of existing results already computed for the workflow but will use the modified Docker image for any remaining jobs to be executed.
+
+
+
