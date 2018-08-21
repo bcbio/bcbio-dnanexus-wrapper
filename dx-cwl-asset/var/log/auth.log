@@ -1,0 +1,12 @@
+Aug 17 23:53:31 job-FJqbzq80zB4xb42JK2x0Gp2Y sudo:     root : TTY=unknown ; PWD=/home/dnanexus ; USER=root ; COMMAND=/usr/bin/find / -not -path /proc* -not -path /tmp* -not -path /run* -not -path /boot* -not -path /home/dnanexus* -not -path /sys*
+Aug 17 23:53:31 job-FJqbzq80zB4xb42JK2x0Gp2Y sudo: pam_unix(sudo:session): session opened for user root by (uid=0)
+Aug 17 23:53:34 job-FJqbzq80zB4xb42JK2x0Gp2Y sudo: pam_unix(sudo:session): session closed for user root
+Aug 17 23:53:37 job-FJqbzq80zB4xb42JK2x0Gp2Y sudo:     root : TTY=unknown ; PWD=/home/dnanexus ; USER=root ; COMMAND=/usr/bin/make -C /home/dnanexus
+Aug 17 23:53:37 job-FJqbzq80zB4xb42JK2x0Gp2Y sudo: pam_unix(sudo:session): session opened for user root by (uid=0)
+Aug 17 23:53:38 job-FJqbzq80zB4xb42JK2x0Gp2Y sudo: pam_unix(sudo:session): session closed for user root
+Aug 17 23:53:38 job-FJqbzq80zB4xb42JK2x0Gp2Y sudo:     root : TTY=unknown ; PWD=/home/dnanexus ; USER=root ; COMMAND=/usr/bin/find / -not -path /proc* -not -path /tmp* -not -path /run* -not -path /boot* -not -path /home/dnanexus* -not -path /sys*
+Aug 17 23:53:38 job-FJqbzq80zB4xb42JK2x0Gp2Y sudo: pam_unix(sudo:session): session opened for user root by (uid=0)
+Aug 17 23:53:38 job-FJqbzq80zB4xb42JK2x0Gp2Y sudo: pam_unix(sudo:session): session closed for user root
+Aug 17 23:53:39 job-FJqbzq80zB4xb42JK2x0Gp2Y sudo:     root : TTY=unknown ; PWD=/home/dnanexus ; USER=root ; COMMAND=/usr/bin/comm -13 /tmp/before-sorted.txt /tmp/after-sorted.txt
+Aug 17 23:53:39 job-FJqbzq80zB4xb42JK2x0Gp2Y sudo: pam_unix(sudo:session): session opened for user root by (uid=0)
+Aug 17 23:53:40 job-FJqbzq80zB4xb42JK2x0Gp2Y sudo: pam_unix(sudo:session): session closed for user root
