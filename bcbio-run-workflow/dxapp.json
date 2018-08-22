@@ -76,10 +76,8 @@
     }
   ],
   "runSpec": {
-    "assetDepends": [{"name": "bcbio-vm-asset.tar.gz", "id": "record-FJ2KQx80BFX876B22xzVP355"},
-                     {"name": "quay.io/bcbio/bcbio-vc.tar.gz", "id": "record-FJ2P25j0f5vJxx3K95BVVx2f"},
-                     {"name": "yq-asset.tar.gz", "id": "record-FJxbg780k6bv261v7K4P9zbx"},
-                     {"name": "dx-cwl-asset.tar.gz", "id": "record-FJxbbk00Jqf3fkKj7VY364Q6"}],
+    "assetDepends": [{"name": "bcbio-vm-asset.tar.gz", "id": "record-FJyFFqj0GQ8Q6y9k825Bk1bK"},
+                     {"name": "quay.io/bcbio/bcbio-vc.tar.gz", "id": "record-FJ2P25j0f5vJxx3K95BVVx2f"}],
     "timeoutPolicy": {
       "*": {
         "hours": 72

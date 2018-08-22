@@ -1,9 +1,0 @@
-{
-  "name": "dx-cwl-asset",
-  "title": "Asset for the dx-cwl",
-  "description": "Performs a basic installation of dx-cwl",
-  "version": "0.0.1",
-  "distribution": "Ubuntu",
-  "instanceType": "mem1_ssd1_x8",
-  "release": "14.04"
-}

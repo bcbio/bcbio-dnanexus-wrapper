@@ -1,9 +1,0 @@
-{
-  "name": "yq-asset",
-  "title": "Asset for yq",
-  "description": "Performs a basic installation of yq",
-  "version": "0.0.1",
-  "distribution": "Ubuntu",
-  "instanceType": "mem1_ssd1_x4",
-  "release": "14.04"
-}
