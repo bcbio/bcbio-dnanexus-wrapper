@@ -5,7 +5,7 @@ main() {
 
     # This container file is the actual bundled file record-FJ2P25j0f5vJxx3K95BVVx2f is poiting to.
     # bcbio-run-workflow app requires the fileID for dx-cwl to compile the workflow 
-    BCBIO_CONTAINER_FILE="file-FJkVkkj0f5v8QzVg835Z8j7P" 
+    BCBIO_CONTAINER_FILE="file-FK36j2j0f5v81f9X2GXVYBGZ"
 
     if [ "$pull_from_docker_registry" = "true" ]; then
         BCBIO_ASSETS=""
