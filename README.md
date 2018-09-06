@@ -49,6 +49,10 @@ reference (`record-NNN`) and the docker file reference from this (`file-NNN`).
 
 ### Build the bcbio-vm asset
 
+The bcbio-vm asset includes installation of requirements for running
+using [bioconda recipes](https://bioconda.github.io/). If bcbio, bcbio-vm or
+dx-cwl have changed, update [the recipes](https://github.com/bioconda/bioconda-recipes)
+prior to rebuilding to include these latest changes when rebuilding this asset.
 ```
 dx select bcbio_resources
 dx build_asset bcbio-dnanexus-wrapper/bcbio-vm-asset -d bcbio_resources:/bcbio_assets
