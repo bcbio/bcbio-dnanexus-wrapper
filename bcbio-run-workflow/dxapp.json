@@ -3,7 +3,7 @@
   "title": "Create and run BCBIO Workflow",
   "summary": "Creates and runs a BCBIO Workflow on DNAnexus using a YAML template and a sample specification",
   "dxapi": "1.0.0",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "inputSpec": [
     {
       "name": "yaml_template",
@@ -76,7 +76,7 @@
     }
   ],
   "runSpec": {
-    "assetDepends": [{"name": "bcbio-vm-asset.tar.gz", "id": "record-FK36958017k13PbPKky9j1g8"},
+    "assetDepends": [{"name": "bcbio-vm-asset.tar.gz", "id": "record-FK8QGy80vf1Q74KyGgQ93P76"},
                      {"name": "quay.io/bcbio/bcbio-vc.tar.gz", "id": "record-FK36jvQ0f5v9fv5J2F9Qb0xy"}],
     "timeoutPolicy": {
       "*": {
