@@ -72,7 +72,7 @@
       "name": "generated_cwl",
       "label": "tar-gz of the generated CWL for this run",
       "class": "file",
-      "optional": false
+      "optional": true
     }
   ],
   "runSpec": {
